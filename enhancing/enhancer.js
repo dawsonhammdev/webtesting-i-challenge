@@ -6,7 +6,16 @@ module.exports = {
 };
 
 function succeed(item) {
-  return { ...item };
+  if (item.enhancement >= 0 && item.enhancement < 20) {
+    console.log("increase")
+    return item.enhancement + 1;
+  } else if (item.enhancement == 20) {
+    console.log("changed")
+    return item.enhancement
+  } else if (item.enhancement < 0 && item.enhancement > 20) {
+    console.log("not valid")
+    return null
+  }
 }
 
 function fail(item) {
@@ -14,7 +23,9 @@ function fail(item) {
 }
 
 function repair(item) {
-  return { ...item };
+  if (item.enhancement === 100) {
+    return item.enhancement
+  }
 }
 
 function get(item) {
